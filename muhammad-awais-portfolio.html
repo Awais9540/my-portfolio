@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Awais — AI Engineer & Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #050A0E;
+    --bg2: #0A1219;
+    --bg3: #0F1A24;
+    --surface: #111D27;
+    --surface2: #162230;
+    --border: rgba(0,210,150,0.12);
+    --border2: rgba(0,210,150,0.25);
+    --accent: #00D296;
+    --accent2: #00A876;
+    --accent-dim: rgba(0,210,150,0.08);
+    --accent-glow: rgba(0,210,150,0.15);
+    --blue: #3B8BEB;
+    --blue-dim: rgba(59,139,235,0.1);
+    --coral: #FF6B4A;
+    --coral-dim: rgba(255,107,74,0.1);
+    --text: #E8F0F5;
+    --text2: #8AABB8;
+    --text3: #4A6A7A;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(0,210,150,0.2); color: var(--accent); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(5,10,14,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,150,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,150,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,210,150,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 1100px; width: 100%; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    background: var(--accent-dim);
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name .line2 { color: var(--accent); }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    color: var(--text2);
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text2);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: #00F0AF; transform: translateY(-1px); }
+  .btn-secondary {
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats {
+    display: flex; gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.82rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 7rem 4rem; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .section-tag::before { content: '//'; opacity: 0.5; }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--text2); max-width: 540px; font-weight: 300; }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+  .about-text p { color: var(--text2); margin-bottom: 1.25rem; font-weight: 300; font-size: 1.02rem; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-highlight {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    font-size: 1.05rem;
+    color: var(--text);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .about-card-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+  }
+  .about-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--accent-dim);
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .about-item-label { font-size: 0.78rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .about-item-val { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+
+  /* SKILLS */
+  #skills { background: var(--bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .skill-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
+  .skill-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .skill-icon.green { background: var(--accent-dim); border: 1px solid var(--border2); }
+  .skill-icon.blue { background: var(--blue-dim); border: 1px solid rgba(59,139,235,0.25); }
+  .skill-icon.coral { background: var(--coral-dim); border: 1px solid rgba(255,107,74,0.25); }
+  .skill-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    background: var(--surface2);
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--blue));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-card.featured { border-color: rgba(0,210,150,0.2); }
+  .project-card.featured::before { opacity: 1; }
+  .project-num {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .project-tagline { font-size: 0.9rem; color: var(--accent); margin-bottom: 1rem; font-weight: 500; }
+  .project-desc { font-size: 0.92rem; color: var(--text2); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem; flex: 1; }
+  .project-metrics { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .metric {
+    padding: 5px 12px;
+    background: var(--accent-dim);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .metric.blue { background: var(--blue-dim); border-color: rgba(59,139,235,0.25); color: var(--blue); }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.75rem; }
+  .stack-tag {
+    padding: 3px 9px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 0.74rem;
+    color: var(--text3);
+    font-family: 'Courier New', monospace;
+  }
+  .project-links { display: flex; gap: 0.75rem; }
+  .project-link {
+    padding: 0.6rem 1.25rem;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .project-link.primary { background: var(--accent); color: var(--bg); }
+  .project-link.primary:hover { background: #00F0AF; }
+  .project-link.ghost { border: 1px solid var(--border2); color: var(--text2); }
+  .project-link.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-wrapper { margin-top: 4rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .contact-intro p { color: var(--text2); font-weight: 300; font-size: 1rem; margin-bottom: 2rem; }
+  .contact-channels { display: flex; flex-direction: column; gap: 0.75rem; }
+  .channel {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .channel:hover { border-color: var(--border2); transform: translateX(4px); }
+  .channel-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--accent-dim);
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .channel-label { font-size: 0.75rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; }
+  .channel-val { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+  .contact-form-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .form-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: 0.78rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.5rem; }
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 300;
+    transition: border-color 0.15s;
+    outline: none;
+    resize: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-submit {
+    width: 100%; padding: 0.9rem;
+    background: var(--accent); color: var(--bg);
+    border: none; border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; letter-spacing: 0.03em;
+    transition: background 0.15s;
+  }
+  .form-submit:hover { background: #00F0AF; }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg);
+  }
+  .footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1rem; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 0.82rem; color: var(--text3); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--text3); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* DIVIDER */
+  .divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin: 1.25rem 0; }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+  .delay-5 { animation-delay: 0.65s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .about-grid, .projects-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MA<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge fade-in">Available for Freelance & Remote Work</div>
+    <h1 class="hero-name fade-in delay-1">
+      Muhammad<br>
+      <span class="line2">Awais.</span>
+    </h1>
+    <p class="hero-title fade-in delay-2">AI Engineer &amp; Full Stack Developer</p>
+    <p class="hero-desc fade-in delay-3">
+      CS Graduate from Pakistan who builds <strong>real-world AI systems</strong> from scratch —
+      custom datasets, deep learning models, full mobile apps, and intelligent backends.
+      I don't just use AI. I <strong>engineer it.</strong>
+    </p>
+    <div class="hero-actions fade-in delay-4">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Let's Talk</a>
+      <a href="https://github.com/Awais9540" target="_blank" class="btn-secondary">GitHub ↗</a>
+    </div>
+    <div class="hero-stats fade-in delay-5">
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Production AI Apps</div>
+      </div>
+      <div>
+        <div class="stat-num">18K+</div>
+        <div class="stat-label">Custom Dataset Images</div>
+      </div>
+      <div>
+        <div class="stat-num">3.6</div>
+        <div class="stat-label">CGPA / 4.0</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">ML Architectures Tested</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About Me</div>
+  <h2 class="section-title">Who is Muhammad Awais?</h2>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Computer Science graduate</strong> from Sialkot, Pakistan, with a CGPA of 3.6/4.0 and a deep passion for building AI-powered products that solve real problems.</p>
+      <p>Unlike most graduates who rely on pre-built tools, I've built AI systems from the ground up — <strong>collecting raw agricultural images in the field, training custom CNN architectures, implementing Graph Neural Networks</strong> for cybersecurity, and shipping full mobile apps end-to-end.</p>
+      <blockquote class="about-highlight">
+        "I don't just study AI — I build it, test it in the real world, and ship it to users."
+      </blockquote>
+      <p>My stack spans the full journey: from <strong>raw data collection</strong> to model training, FastAPI backends, React Native frontends, and cloud deployment. I'm looking for freelance clients and remote opportunities where I can deliver serious AI value.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-item">
+        <div class="about-icon">🎓</div>
+        <div>
+          <div class="about-item-label">Degree</div>
+          <div class="about-item-val">BS Computer Science — Sialkot, Pakistan</div>
+        </div>
+      </div>
+      <div class="about-card-item">
+        <div class="about-icon">📊</div>
+        <div>
+          <div class="about-item-label">CGPA</div>
+          <div class="about-item-val">3.6 / 4.0</div>
+        </div>
+      </div>
+      <div class="about-card-item">
+        <div class="about-icon">🤖</div>
+        <div>
+          <div class="about-item-label">Specialization</div>
+          <div class="about-item-val">AI/ML Engineering + Full Stack Dev</div>
+        </div>
+      </div>
+      <div class="about-card-item">
+        <div class="about-icon">📍</div>
+        <div>
+          <div class="about-item-label">Location</div>
+          <div class="about-item-val">Sialkot, Pakistan — Open to Remote</div>
+        </div>
+      </div>
+      <div class="about-card-item">
+        <div class="about-icon">💼</div>
+        <div>
+          <div class="about-item-label">Status</div>
+          <div class="about-item-val" style="color: var(--accent);">✦ Available for Work</div>
+        </div>
+      </div>
+      <div class="about-card-item">
+        <div class="about-icon">📧</div>
+        <div>
+          <div class="about-item-label">Email</div>
+          <div class="about-item-val">awaismukhtar892@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Expertise</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="divider"></div>
+  <p class="section-sub">A full-spectrum stack — from raw ML model training to deployed mobile apps.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon green">🧠</div>
+        <div class="skill-card-title">AI / Machine Learning</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">CNN Architectures</span>
+        <span class="tag">Graph Neural Networks</span>
+        <span class="tag">ConvNeXt</span>
+        <span class="tag">EfficientNet</span>
+        <span class="tag">GraphSAGE</span>
+        <span class="tag">Grad-CAM / XAI</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Data Augmentation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon blue">📱</div>
+        <div class="skill-card-title">Mobile & Frontend</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Expo / EAS</span>
+        <span class="tag">React.js</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Context API</span>
+        <span class="tag">Zustand</span>
+        <span class="tag">React Navigation</span>
+        <span class="tag">Reanimated</span>
+        <span class="tag">HTML / CSS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon coral">⚙️</div>
+        <div class="skill-card-title">Backend & APIs</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Uvicorn</span>
+        <span class="tag">Groq API</span>
+        <span class="tag">OpenAI API</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon green">🚀</div>
+        <div class="skill-card-title">Tools & Deployment</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">Expo EAS Build</span>
+        <span class="tag">Android APK</span>
+        <span class="tag">Androguard</span>
+        <span class="tag">LLaMA 3.3 70B</span>
+        <span class="tag">LLM Integration</span>
+        <span class="tag">NumPy / Pandas</span>
+        <span class="tag">Torchvision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">Portfolio</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Not tutorials. Not clones. Real systems built from scratch and deployed.</p>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="project-num">Project 01 — Final Year Project</div>
+      <div class="project-name">LeafDoc</div>
+      <div class="project-tagline">AI-Powered Smart Agriculture Ecosystem</div>
+      <div class="project-desc">
+        A complete mobile AI platform for plant disease detection built on a <strong>custom dataset of 18,000+ real agricultural images</strong> collected and labeled from scratch. Tested 5 CNN architectures and deployed ConvNeXt-Tiny as the final model. Features Explainable AI via Grad-CAM heatmaps, an AI farming chatbot, live weather advisory, and smart spray timing — a full smart farming ecosystem, not just a classifier.
+      </div>
+      <div class="project-metrics">
+        <span class="metric">29 Disease Classes</span>
+        <span class="metric">18,000+ Images</span>
+        <span class="metric">87% Train Accuracy</span>
+        <span class="metric blue">Custom Dataset</span>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">React Native</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">PyTorch</span>
+        <span class="stack-tag">ConvNeXt</span>
+        <span class="stack-tag">Grad-CAM</span>
+        <span class="stack-tag">Expo EAS</span>
+        <span class="stack-tag">PostgreSQL</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Awais9540/plant-disease-app" target="_blank" class="project-link primary">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card featured">
+      <div class="project-num">Project 02 — Final Year Project</div>
+      <div class="project-name">CyberGuard</div>
+      <div class="project-tagline">Graph Neural Network Malware Detection Engine</div>
+      <div class="project-desc">
+        An advanced Android cybersecurity app that treats every APK as a <strong>mathematical graph</strong>. Instead of signature-based detection that hackers easily bypass, CyberGuard uses GraphSAGE to analyze 470 extracted features — permissions, API calls, intents — and detect malware behavior regardless of obfuscation. Integrated with LLaMA 3.3 70B chatbot that explains detected threats in plain language.
+      </div>
+      <div class="project-metrics">
+        <span class="metric">470 APK Features</span>
+        <span class="metric">GraphSAGE GNN</span>
+        <span class="metric blue">LLaMA 3.3 70B</span>
+        <span class="metric">Live Threat Feed</span>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">React Native</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">PyTorch Geometric</span>
+        <span class="stack-tag">GraphSAGE</span>
+        <span class="stack-tag">Androguard</span>
+        <span class="stack-tag">Groq API</span>
+        <span class="stack-tag">SQLite</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Awais9540/MalwareDetector-App" target="_blank" class="project-link primary">View on GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Available for freelance projects, remote jobs, and collaborations. Let's build something great.</p>
+  <div class="contact-wrapper">
+    <div class="contact-intro">
+      <p>Whether you need an AI-powered mobile app, a machine learning backend, a full stack web application, or just want to discuss an idea — I'm ready to help turn it into reality.</p>
+      <p>I respond to all messages within 24 hours.</p>
+      <div class="contact-channels">
+        <a href="mailto:awaismukhtar892@gmail.com" class="channel">
+          <div class="channel-icon">✉️</div>
+          <div>
+            <div class="channel-label">Email</div>
+            <div class="channel-val">awaismukhtar892@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/923328695157" target="_blank" class="channel">
+          <div class="channel-icon">💬</div>
+          <div>
+            <div class="channel-label">WhatsApp</div>
+            <div class="channel-val">+92 332 8695157</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-awais-862077369/" target="_blank" class="channel">
+          <div class="channel-icon">💼</div>
+          <div>
+            <div class="channel-label">LinkedIn</div>
+            <div class="channel-val">muhammad-awais-862077369</div>
+          </div>
+        </a>
+        <a href="https://github.com/Awais9540" target="_blank" class="channel">
+          <div class="channel-icon">🐙</div>
+          <div>
+            <div class="channel-label">GitHub</div>
+            <div class="channel-val">github.com/Awais9540</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-box">
+      <div class="form-title">Send a Message</div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Smith" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@company.com" />
+      </div>
+      <div class="form-group">
+        <label>Project Type</label>
+        <input type="text" placeholder="AI App / Full Stack / ML Model..." />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="4" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Thank you! Muhammad Awais will get back to you within 24 hours.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MA<span>.</span></div>
+  <div class="footer-copy">© 2026 Muhammad Awais. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://github.com/Awais9540" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/muhammad-awais-862077369/" target="_blank">LinkedIn</a>
+    <a href="mailto:awaismukhtar892@gmail.com">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
